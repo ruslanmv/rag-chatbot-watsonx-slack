@@ -8,40 +8,44 @@ This repository contains all the necessary code and configuration files to take 
 
 ```mermaid
 graph TD
-    subgraph "Knowledge & Data Layer"
-        KnowledgeBase[Vector Knowledge Base<br>Managed by Orchestrate]
-        Embeddings[Embeddings Model<br>ibm/slate]
-        BoxSync[Box Document Sync<br>box_sync_tool.py]
-        BoxFolder[Box Folder]
-    end
-
-    subgraph "Orchestration & AI Core"
-        OrchestrateServer[watsonx Orchestrate Agent Server]
-        RAGAgent[Slack RAG Agent]
-        LLM[LLM: Llama 3<br>watsonx.ai]
-    end
-
-    subgraph "Integration Layer"
-        SlackAPI[Slack API / Socket Mode]
-        SlackBotApp[Python Bot Application<br>advanced_slack_bot.py]
-    end
-
+    %% User Interface
     subgraph "User Interface"
-        SlackUser[User in Slack]
+        SlackUser["User in Slack"]
+    end
+
+    %% Integration Layer
+    subgraph "Integration Layer"
+        SlackAPI["Slack API / Socket Mode"]
+        SlackBotApp["Python Bot Application<br>advanced_slack_bot.py"]
+    end
+
+    %% Orchestration & AI Core
+    subgraph "Orchestration & AI Core"
+        OrchestrateServer["watsonx Orchestrate Agent Server"]
+        RAGAgent["Slack RAG Agent"]
+        LLM["LLM: Llama 3<br>watsonx.ai"]
+    end
+
+    %% Knowledge & Data Layer
+    subgraph "Knowledge & Data Layer"
+        KnowledgeBase["Vector Knowledge Base<br>Managed by Orchestrate"]
+        Embeddings["Embeddings Model<br>ibm/slate"]
+        BoxSync["Box Document Sync<br>box_sync_tool.py"]
+        BoxFolder["Box Folder"]
     end
 
     %% Data Flow
-    SlackUser -- "1. Sends Message" --> SlackAPI
-    SlackAPI -- "2. Event" --> SlackBotApp
-    SlackBotApp -- "3. API Call" --> OrchestrateServer
-    OrchestrateServer -- "4. Invokes Agent" --> RAGAgent
-    RAGAgent -- "5. Searches" --> KnowledgeBase
-    RAGAgent -- "6. Generates Response via" --> LLM
-    LLM -- "7. Response" --> RAGAgent
-    RAGAgent -- "8. Result" --> OrchestrateServer
-    OrchestrateServer -- "9. API Response" --> SlackBotApp
-    SlackBotApp -- "10. Posts Reply" --> SlackAPI
-    SlackAPI -- "11. Displays to User" --> SlackUser
+    SlackUser -- "1: Sends Message" --> SlackAPI
+    SlackAPI -- "2: Event" --> SlackBotApp
+    SlackBotApp -- "3: API Call" --> OrchestrateServer
+    OrchestrateServer -- "4: Invokes Agent" --> RAGAgent
+    RAGAgent -- "5: Searches" --> KnowledgeBase
+    RAGAgent -- "6: Generates Response via" --> LLM
+    LLM -- "7: Response" --> RAGAgent
+    RAGAgent -- "8: Result" --> OrchestrateServer
+    OrchestrateServer -- "9: API Response" --> SlackBotApp
+    SlackBotApp -- "10: Posts Reply" --> SlackAPI
+    SlackAPI -- "11: Displays to User" --> SlackUser
 
     %% Knowledge Base Population Flow
     BoxFolder -- "Syncs" --> BoxSync
