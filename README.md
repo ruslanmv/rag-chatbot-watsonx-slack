@@ -8,13 +8,11 @@ This repository contains all the necessary code and configuration files to take 
 
 ```mermaid
 graph TD
-    subgraph "User Interface"
-        SlackUser[User in Slack]
-    end
-
-    subgraph "Integration Layer"
-        SlackAPI[Slack API / Socket Mode]
-        SlackBotApp[Python Bot Application<br>advanced_slack_bot.py]
+    subgraph "Knowledge & Data Layer"
+        KnowledgeBase[Vector Knowledge Base<br>Managed by Orchestrate]
+        Embeddings[Embeddings Model<br>ibm/slate]
+        BoxSync[Box Document Sync<br>box_sync_tool.py]
+        BoxFolder[Box Folder]
     end
 
     subgraph "Orchestration & AI Core"
@@ -23,11 +21,13 @@ graph TD
         LLM[LLM: Llama 3<br>watsonx.ai]
     end
 
-    subgraph "Knowledge & Data Layer"
-        KnowledgeBase[Vector Knowledge Base<br>Managed by Orchestrate]
-        Embeddings[Embeddings Model<br>ibm/slate]
-        BoxSync[Box Document Sync<br>box_sync_tool.py]
-        BoxFolder[Box Folder]
+    subgraph "Integration Layer"
+        SlackAPI[Slack API / Socket Mode]
+        SlackBotApp[Python Bot Application<br>advanced_slack_bot.py]
+    end
+
+    subgraph "User Interface"
+        SlackUser[User in Slack]
     end
 
     %% Data Flow
@@ -52,6 +52,7 @@ graph TD
     style SlackUser fill:#D6EAF8,stroke:#333,stroke-width:2px
     style BoxFolder fill:#D5F5E3,stroke:#333,stroke-width:2px
     style LLM fill:#FCF3CF,stroke:#333,stroke-width:2px
+
 
 ```
 
