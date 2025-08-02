@@ -1,0 +1,20 @@
+spec_version: v1
+kind: native
+name: rag_chatbot
+display_name: "RAG Chatbot"
+description: "A RAG-powered chatbot that answers questions using company knowledge base"
+instructions: |
+  You are a helpful assistant that answers questions using the company knowledge base.
+  Always search the knowledge base first before responding.
+  If you cannot find relevant information, clearly state that you don't have that information.
+  Provide citations when possible.
+llm: watsonx/meta-llama/llama-3-2-90b-vision-instruct
+style: default
+knowledge_base:
+  - rag_knowledge_base
+tools: []
+collaborators: []
+tags:
+  - rag
+  - chatbot
+  - knowledge

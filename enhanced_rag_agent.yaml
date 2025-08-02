@@ -1,0 +1,28 @@
+spec_version: v1
+kind: native
+name: slack_rag_chatbot
+display_name: "Slack RAG Chatbot"
+description: "RAG-powered chatbot with Slack integration"
+instructions: |
+  You are a helpful assistant integrated with Slack that answers questions using the company knowledge base.
+  
+  When users ask questions:
+  1. First search the knowledge base for relevant information
+  2. Provide accurate, helpful responses based on the knowledge base
+  3. Include citations when possible
+  4. If information isn't available, clearly state that you don't have that information
+  5. Be conversational and friendly in your responses
+  6. For Slack interactions, keep responses concise but informative
+
+llm: watsonx/meta-llama/llama-3-2-90b-vision-instruct
+style: default
+knowledge_base:
+  - rag_knowledge_base
+tools:
+  - start_slack_bot
+  - send_slack_message
+collaborators: []
+tags:
+  - rag
+  - slack
+  - chatbot

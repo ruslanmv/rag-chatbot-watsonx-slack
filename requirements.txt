@@ -1,0 +1,15 @@
+# Core watsonx Orchestrate SDK
+ibm-watsonx-orchestrate
+
+# Box API for document sync
+boxsdk
+python-dotenv
+
+# Slack integration
+slack_bolt
+slack_sdk
+
+# Other utilities
+pyyaml
+schedule
+requests
