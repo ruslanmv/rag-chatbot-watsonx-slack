@@ -31,7 +31,7 @@ The Slack integration is handled by a Python application that listens for events
 
 Here is a breakdown of the project structure:
 
-
+```
 📁 rag-chatbot-watsonx-slack/
 │
 ├── Makefile                  # Automates common development tasks
@@ -50,10 +50,10 @@ Here is a breakdown of the project structure:
 ├── scheduled_box_sync.py     # Optional script to automate syncing
 ├── slack_bot.py              # Initial Slack integration tools
 └── advanced_slack_bot.py     # The complete, asynchronous Slack bot application
-
+```
 
 ---
 
 ## 5. Getting Started
 
-To get started, please refer to the [SETUP.md](SETUP.md) file for detailed, step-by-step instructions on how to configure and run the project.
+To get started, please refer to the [SETUP.md](./docs/SETUP.md) file for detailed, step-by-step instructions on how to configure and run the project.
